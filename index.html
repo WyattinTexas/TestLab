@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Engineer Wyatt's Adventure</title>
 
-    <!-- Updated CSS for a more inviting look and a nice border around gameplay -->
+    <!-- Updated CSS for a more inviting look with a border around gameplay -->
     <style>
         body {
             text-align: center;
@@ -22,6 +22,9 @@
             justify-content: center;
             align-items: center;
             margin: auto;
+        }
+
+        .border-container {
             border: 20px solid #3498db; /* Set a border color around gameplay */
             box-sizing: border-box;
             border-radius: 20px; /* Add border radius for a more polished look */
@@ -37,9 +40,11 @@
 
 </head>
 <body>
-    <!-- Use a container div for the game with an inviting border -->
+    <!-- Use separate divs for gameplay and border -->
     <div class="game-container">
-        <canvas id="unity-canvas" width=960 height=540 tabindex="-1"></canvas>
+        <div class="border-container">
+            <canvas id="unity-canvas" width=960 height=540 tabindex="-1"></canvas>
+        </div>
     </div>
 
     <script src="Build/Nations.loader.js"></script>
