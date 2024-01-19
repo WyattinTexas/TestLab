@@ -1,47 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity Web Player | Engineer Wyatt</title>
-
-    <!-- Added CSS style for a cool-looking border -->
-    <style>
-        body {
-            text-align: center;
-            padding: 0;
-            border: 0;
-            margin: 0;
-            overflow: hidden;
-            background-color: #000; /* Set background color */
-        }
-
-        .game-container {
-            width: 1920px;
-            height: 1080px;
-            background: #231F20;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: auto;
-            border: 20px solid #3498db; /* Set border color and thickness */
-            box-sizing: border-box;
-        }
-
-        canvas {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-    <!-- End of style -->
-
-</head>
-<body>
-    <!-- Use a container div for the game with the added border -->
-    <div class="game-container">
-        <canvas id="unity-canvas" width=1920 height=1080 tabindex="-1"></canvas>
-    </div>
-
+  </head>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width=960 height=540 tabindex="-1" style="width: 960px; height: 540px; background: #231F20"></canvas>
     <script src="Build/Nations.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -68,7 +33,9 @@
         companyName: "DefaultCompany",
         productName: "Engineer Wyatt",
         productVersion: "1.0.2",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
     </script>
-</body>
+  </body>
 </html>
