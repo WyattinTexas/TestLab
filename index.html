@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Nations Prototype</title>
+    <title>NATION PROTOTYPE V0.01</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style>
@@ -27,7 +27,7 @@
   <body>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
-      <h1>Nation</h1>
+      <h1>NATION</h1>
       <a id="rules-link" href="Nation_Rulebook.pdf" target="_blank">View Rules</a>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -39,8 +39,34 @@
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Nation</div>
+        <div id="unity-build-title">NATION</div>
       </div>
     </div>
+    <script>
+      var canvas = document.querySelector("#unity-canvas");
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+    
+        canvas.style.width = "100%";
+        canvas.style.height = "100vh";
+        canvas.style.position = "fixed";
+    
+        document.body.style.textAlign = "left";
+      }
+    
+      window.addEventListener("orientationchange", function() {
+        if (window.orientation == 0) { // Portrait orientation
+          document.body.style.transform = "scale(0.5)";
+          document.body.style.transformOrigin = "top left";
+        } else { // Landscape orientation
+          document.body.style.transform = "scale(1)";
+        }
+      }, false);
+    </script>
   </body>
 </html>
