@@ -3,11 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Unity Web Player | Engineer Wyatt</title>
+  <title>Unity Web Player | Nations</title>
+  <style>
+    h1 {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    #rules-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-  <a href="Nation_Rulebook.pdf" target="_blank">View Rules</a>
+  <h1>Nation</h1>
   <canvas id="unity-canvas" width=960 height=540 tabindex="-1" style="width: 960px; height: 540px; background: #231F20"></canvas>
+  <a id="rules-link" href="Nation_Rulebook.pdf" target="_blank">View Rules</a>
   <script src="Build/Nations_00001.loader.js"></script>
   <script>
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -16,14 +31,18 @@
       meta.name = 'viewport';
       meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
       document.getElementsByTagName('head')[0].appendChild(meta);
-
-      var canvas = document.querySelector("#unity-canvas");
-      canvas.style.width = "100%";
-      canvas.style.height = "100%";
-      canvas.style.position = "fixed";
-
-      document.body.style.textAlign = "left";
     }
+
+    // Preserve the aspect ratio of the canvas when the window is resized
+    window.addEventListener('resize', function() {
+      var canvas = document.querySelector("#unity-canvas");
+      var windowAspectRatio = window.innerWidth / window.innerHeight;
+      var gameAspectRatio = canvas.width / canvas.height;
+      if (windowAspectRatio < gameAspectRatio)
+        canvas.style.width = '100%';
+      else
+        canvas.style.height = '100%';
+    });
 
     createUnityInstance(document.querySelector("#unity-canvas"), {
       arguments: [],
