@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | Engineer Wyatt</title>
+    <title>Unity Web Player | Nation</title>
     <style>
       h1 {
         text-align: center;
@@ -23,7 +23,7 @@
     <h1>Nation</h1>
     <canvas id="unity-canvas" width=960 height=540 tabindex="-1" style="width: 960px; height: 540px; background: #231F20"></canvas>
     <a id="rules-link" href="Nation_Rulebook.pdf" target="_blank">View Rules</a>
-    <script src="Build/Nations_00002.loader.js"></script>
+    <script src="Build/Nations_00003.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -31,31 +31,38 @@
         meta.name = 'viewport';
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
-      }
-
-      // Preserve the aspect ratio of the canvas when the window is resized
-      window.addEventListener('resize', function() {
+    
         var canvas = document.querySelector("#unity-canvas");
-        var windowAspectRatio = window.innerWidth / window.innerHeight;
-        var gameAspectRatio = canvas.width / canvas.height;
-        if (windowAspectRatio < gameAspectRatio)
-          canvas.style.width = '100%';
-        else
-          canvas.style.height = '100%';
-      });
-
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
+    
+        document.body.style.textAlign = "left";
+      }
+    
+      window.addEventListener("orientationchange", function() {
+        if (window.orientation == 0) { // Portrait orientation
+          document.body.style.transform = "scale(0.5)";
+          document.body.style.transformOrigin = "top left";
+        } else { // Landscape orientation
+          document.body.style.transform = "scale(1)";
+        }
+      }, false);
+    
       createUnityInstance(document.querySelector("#unity-canvas"), {
         arguments: [],
-        dataUrl: "Build/Nations_00002.data",
-        frameworkUrl: "Build/Nations_00002.framework.js",
-        codeUrl: "Build/Nations_00002.wasm",
+        dataUrl: "Build/Nations_00003.data",
+        frameworkUrl: "Build/Nations_00003.framework.js",
+        codeUrl: "Build/Nations_00003.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "Engineer Wyatt",
-        productVersion: "1.0.2",
+        productName: "Nation",
+        productVersion: "1.0.3",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
     </script>
   </body>
+
+  
 </html>
